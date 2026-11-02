@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Sales and Rental Manager)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="purchases.html">Purchase Requests</a>
+        <a href="rentals.html">Rental Requests</a>
+        <a href="pickup-return.html">Pickup and Return</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Sales and Rental Manager Dashboard</h2>
+
+        <div class="stat-row">
+            <div class="stat"><h3 id="totalCars">0</h3><p>Total Vehicles</p></div>
+            <div class="stat"><h3 id="availableCars">0</h3><p>Available</p></div>
+            <div class="stat"><h3 id="rentedCars">0</h3><p>Rented Now</p></div>
+            <div class="stat"><h3 id="soldCars">0</h3><p>Sold</p></div>
+            <div class="stat"><h3 id="pendingPurchases">0</h3><p>Pending Purchases</p></div>
+            <div class="stat"><h3 id="pendingRentals">0</h3><p>Pending Rentals</p></div>
+        </div>
+
+        <div class="box">
+            <h3>Today's Work</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking</th>
+                        <th>Car</th>
+                        <th>Customer</th>
+                        <th>Dates</th>
+                        <th>To Do</th>
+                    </tr>
+                </thead>
+                <tbody id="todoTable"></tbody>
+            </table>
+            <p><a href="pickup-return.html">Go to Pickup and Return</a></p>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/manager.js"></script>
+    <script>
+        loadManagerDashboard();
+    </script>
+</body>
+</html>

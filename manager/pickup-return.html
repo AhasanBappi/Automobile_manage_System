@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup and Return</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Sales and Rental Manager)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="purchases.html">Purchase Requests</a>
+        <a href="rentals.html">Rental Requests</a>
+        <a href="pickup-return.html">Pickup and Return</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Vehicle Pickup and Return</h2>
+        <p id="message" class="form-message"></p>
+
+        <div class="box">
+            <h3>Ready for Pickup (Approved Bookings)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Car</th>
+                        <th>Customer</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Pickup Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="pickupTable"></tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h3>Record Return (Cars on Rent)</h3>
+            <p class="note" id="lateRule"></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Car</th>
+                        <th>Customer</th>
+                        <th>Picked Up</th>
+                        <th>Due Date</th>
+                        <th>Return Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="returnTable"></tbody>
+            </table>
+
+            <div id="chargeBox" style="display: none;">
+                <h4>Rental Charge</h4>
+                <table class="info-table" id="chargeTable"></table><br>
+                <button class="btn-green" onclick="confirmReturn()">Confirm Return</button>
+                <button onclick="cancelReturn()">Cancel</button>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>Returned Vehicles</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Car</th>
+                        <th>Customer</th>
+                        <th>Picked Up</th>
+                        <th>Returned</th>
+                        <th>Late Days</th>
+                        <th>Late Fee</th>
+                        <th>Total Charge</th>
+                    </tr>
+                </thead>
+                <tbody id="returnedTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/manager.js"></script>
+    <script>
+        loadPickupReturnPage();
+    </script>
+</body>
+</html>

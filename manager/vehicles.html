@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Listings</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Sales and Rental Manager)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="purchases.html">Purchase Requests</a>
+        <a href="rentals.html">Rental Requests</a>
+        <a href="pickup-return.html">Pickup and Return</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Vehicle Listings</h2>
+
+        <div class="box">
+            <h3 id="formTitle">Add New Vehicle</h3>
+            <p id="message" class="form-message"></p>
+
+            <form action="#" method="post" novalidate id="vehicleForm" onsubmit="return saveVehicle()">
+                <input type="hidden" id="editId" value="">
+
+                <label for="brand">Brand:</label><br>
+                <input type="text" id="brand" name="brand" required><br><br>
+
+                <label for="model">Model:</label><br>
+                <input type="text" id="model" name="model" required><br><br>
+
+                <label for="year">Year:</label><br>
+                <input type="number" id="year" name="year" required><br><br>
+
+                <label for="category">Category:</label><br>
+                <select id="category" name="category"></select><br><br>
+
+                <label for="fuel">Fuel:</label><br>
+                <select id="fuel" name="fuel">
+                    <option value="Petrol">Petrol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Octane">Octane</option>
+                    <option value="CNG">CNG</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Electric">Electric</option>
+                </select><br><br>
+
+                <label>Transmission:</label><br>
+                <input type="radio" id="automatic" name="transmission" value="Automatic" checked>
+                <label for="automatic">Automatic</label>
+
+                <input type="radio" id="manual" name="transmission" value="Manual">
+                <label for="manual">Manual</label><br><br>
+
+                <label for="seats">Seats:</label><br>
+                <input type="number" id="seats" name="seats" min="2" max="15" required><br><br>
+
+                <label for="color">Color:</label><br>
+                <input type="text" id="color" name="color" required><br><br>
+
+                <label for="mileage">Mileage (km):</label><br>
+                <input type="number" id="mileage" name="mileage" min="0" required><br><br>
+
+                <label for="price">Sale Price (Tk):</label><br>
+                <input type="number" id="price" name="price" min="0" required><br><br>
+
+                <label for="rentRate">Rent per Day (Tk):</label><br>
+                <input type="number" id="rentRate" name="rentRate" min="0" required><br><br>
+
+                <label>Available For:</label><br>
+                <input type="checkbox" id="forSale" name="forSale" checked>
+                <label for="forSale">Sale</label>
+
+                <input type="checkbox" id="forRent" name="forRent" checked>
+                <label for="forRent">Rent</label><br><br>
+
+                <label for="status">Status:</label><br>
+                <select id="status" name="status">
+                    <option value="Available">Available</option>
+                    <option value="Rented">Rented</option>
+                    <option value="Sold">Sold</option>
+                    <option value="Unavailable">Unavailable (maintenance)</option>
+                </select><br><br>
+
+                <label for="imagePath">Picture File Path:</label><br>
+                <input type="text" id="imagePath" name="imagePath" placeholder="images/cars/toyota-corolla.jpg"><br>
+                <span class="note">Put the picture inside the images/cars folder and write its path here.</span><br><br>
+
+                <label for="imageFile">Or Upload a Picture:</label><br>
+                <input type="file" id="imageFile" name="imageFile" accept="image/*"><br>
+                <span class="note">Small pictures only (max 300 KB). Uploaded pictures are saved in this browser.</span><br><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="3"></textarea><br><br>
+
+                <input type="submit" id="saveButton" value="Add Vehicle">
+                <button type="button" onclick="resetVehicleForm()">Clear Form</button>
+            </form>
+        </div>
+
+        <div class="box">
+            <h3>All Vehicles</h3>
+            <label for="search">Search:</label><br>
+            <input type="text" id="search" placeholder="brand or model" onkeyup="showVehicles()"><br><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Picture</th>
+                        <th>ID</th>
+                        <th>Vehicle</th>
+                        <th>Category</th>
+                        <th>Sale Price</th>
+                        <th>Rent / Day</th>
+                        <th>For</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="vehicleTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/manager.js"></script>
+    <script>
+        loadVehiclesPage();
+    </script>
+</body>
+</html>

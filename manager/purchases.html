@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Requests</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Sales and Rental Manager)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="purchases.html">Purchase Requests</a>
+        <a href="rentals.html">Rental Requests</a>
+        <a href="pickup-return.html">Pickup and Return</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Purchase Requests</h2>
+
+        <div class="box">
+            <p id="message" class="form-message"></p>
+            <p class="note">Approve a request first. After the customer pays, press Confirm Sale to mark the car as sold.</p>
+
+            <label for="statusFilter">Show:</label>
+            <select id="statusFilter" class="small-input" onchange="showPurchases()">
+                <option value="all">All</option>
+                <option value="Pending">Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Completed">Completed</option>
+                <option value="Rejected">Rejected</option>
+            </select><br><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Car</th>
+                        <th>Customer</th>
+                        <th>Price</th>
+                        <th>Payment</th>
+                        <th>Customer Note</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="purchaseTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/manager.js"></script>
+    <script>
+        loadPurchasesPage();
+    </script>
+</body>
+</html>

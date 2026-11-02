@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Requests</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Sales and Rental Manager)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="purchases.html">Purchase Requests</a>
+        <a href="rentals.html">Rental Requests</a>
+        <a href="pickup-return.html">Pickup and Return</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Rental Requests</h2>
+
+        <div class="box">
+            <p id="message" class="form-message"></p>
+            <p class="note">Before approving, the system checks that the dates do not overlap another confirmed booking of the same car.</p>
+
+            <label for="statusFilter">Show:</label>
+            <select id="statusFilter" class="small-input" onchange="showRentals()">
+                <option value="all">All</option>
+                <option value="Pending" selected>Pending</option>
+                <option value="Approved">Approved</option>
+                <option value="Picked Up">Picked Up</option>
+                <option value="Returned">Returned</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Cancelled">Cancelled</option>
+            </select><br><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Car</th>
+                        <th>Customer</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Days</th>
+                        <th>Estimated Cost</th>
+                        <th>Date Check</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="rentalTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/manager.js"></script>
+    <script>
+        loadRentalsPage();
+    </script>
+</body>
+</html>
