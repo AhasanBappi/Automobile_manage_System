@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Settings</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Administrator)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="settings.html">Settings</a>
+        <a href="reports.html">Reports</a>
+        <a href="activity.html">Activity Log</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>System Settings</h2>
+
+        <div class="box">
+            <h3>Vehicle Categories</h3>
+            <p id="categoryMessage" class="form-message"></p>
+
+            <form action="#" method="post" novalidate onsubmit="return addCategory()">
+                <label for="category">New Category:</label><br>
+                <input type="text" id="category" name="category" required>
+                <input type="submit" value="Add">
+            </form><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="categoryTable"></tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h3>Repair Service Types</h3>
+            <p id="serviceMessage" class="form-message"></p>
+
+            <form action="#" method="post" novalidate onsubmit="return addServiceType()">
+                <label for="serviceType">New Service Type:</label><br>
+                <input type="text" id="serviceType" name="serviceType" required>
+                <input type="submit" value="Add">
+            </form><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="serviceTable"></tbody>
+            </table>
+        </div>
+
+        <div class="box">
+            <h3>Rental Rules</h3>
+            <p id="rulesMessage" class="form-message"></p>
+
+            <form action="#" method="post" novalidate onsubmit="return saveRules()">
+                <label for="cancelBeforeDays">Customer can cancel a booking at least this many days before the start date:</label><br>
+                <input type="number" id="cancelBeforeDays" name="cancelBeforeDays" min="0" required><br><br>
+
+                <label for="lateFeePerDay">Late return fee per day (Tk), added to the daily rate:</label><br>
+                <input type="number" id="lateFeePerDay" name="lateFeePerDay" min="0" required><br><br>
+
+                <label for="maxRentalDays">Maximum rental days in one booking:</label><br>
+                <input type="number" id="maxRentalDays" name="maxRentalDays" min="1" required><br><br>
+
+                <input type="submit" value="Save Rules">
+            </form>
+        </div>
+
+        <div class="box">
+            <h3>Reset Demo Data</h3>
+            <p>Deletes all records in this browser and loads the starting demo data again.</p>
+            <button class="btn-red" onclick="resetDemoData()">Reset Demo Data</button>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        loadSettingsPage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Log</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Administrator)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="settings.html">Settings</a>
+        <a href="reports.html">Reports</a>
+        <a href="activity.html">Activity Log</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Activity Log</h2>
+
+        <div class="box">
+            <label for="search">Search:</label><br>
+            <input type="text" id="search" placeholder="user name or action" onkeyup="showLog()">
+            <button class="btn-red" onclick="clearLog()">Clear Log</button>
+            <br><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="logTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        loadActivityPage();
+    </script>
+</body>
+</html>

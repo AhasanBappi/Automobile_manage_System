@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Administrator)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="settings.html">Settings</a>
+        <a href="reports.html">Reports</a>
+        <a href="activity.html">Activity Log</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Summary Reports</h2>
+
+        <div class="box">
+            <h3>Sales Report</h3>
+            <table class="info-table" id="salesReport"></table>
+        </div>
+
+        <div class="box">
+            <h3>Rental Report</h3>
+            <table class="info-table" id="rentalReport"></table>
+        </div>
+
+        <div class="box">
+            <h3>Repair Report</h3>
+            <table class="info-table" id="repairReport"></table>
+        </div>
+
+        <div class="box">
+            <h3>Users Report</h3>
+            <table class="info-table" id="userReport"></table>
+        </div>
+
+        <div class="box">
+            <h3>Export Records as CSV</h3>
+            <label for="exportType">Records:</label><br>
+            <select id="exportType">
+                <option value="cars">Vehicles</option>
+                <option value="purchases">Purchase Requests</option>
+                <option value="rentals">Rental Bookings</option>
+                <option value="repairs">Repair Jobs</option>
+                <option value="history">Service History</option>
+                <option value="users">Users</option>
+                <option value="log">Activity Log</option>
+            </select>
+            <button onclick="exportCSV()">Download CSV</button>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        loadReportsPage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Administrator)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="settings.html">Settings</a>
+        <a href="reports.html">Reports</a>
+        <a href="activity.html">Activity Log</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Administrator Dashboard</h2>
+
+        <div class="stat-row">
+            <div class="stat"><h3 id="totalUsers">0</h3><p>Total Users</p></div>
+            <div class="stat"><h3 id="totalStaff">0</h3><p>Staff Accounts</p></div>
+            <div class="stat"><h3 id="totalCars">0</h3><p>Vehicles</p></div>
+            <div class="stat"><h3 id="pendingPurchases">0</h3><p>Pending Purchases</p></div>
+            <div class="stat"><h3 id="pendingRentals">0</h3><p>Pending Rentals</p></div>
+            <div class="stat"><h3 id="activeRepairs">0</h3><p>Active Repair Jobs</p></div>
+        </div>
+
+        <div class="box">
+            <h3>Quick Links</h3>
+            <a href="users.html"><button>Add Staff Account</button></a>
+            <a href="settings.html"><button>System Settings</button></a>
+            <a href="reports.html"><button>View Reports</button></a>
+        </div>
+
+        <div class="box">
+            <h3>Recent Activity</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>User</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="recentLog"></tbody>
+            </table>
+            <p><a href="activity.html">See full activity log</a></p>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        loadAdminDashboard();
+    </script>
+</body>
+</html>

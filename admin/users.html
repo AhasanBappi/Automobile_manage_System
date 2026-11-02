@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Automobile Management System</h1>
+        <p>Logged in as: <span id="userName"></span> (Administrator)</p>
+    </div>
+
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="settings.html">Settings</a>
+        <a href="reports.html">Reports</a>
+        <a href="activity.html">Activity Log</a>
+        <a href="../profile.html">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Manage Users</h2>
+
+        <div class="box">
+            <h3>Add Staff Account</h3>
+            <p id="message" class="form-message"></p>
+
+            <form action="#" method="post" novalidate onsubmit="return addStaff()">
+                <label for="fullname">Full Name:</label><br>
+                <input type="text" id="fullname" name="fullname" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" placeholder="01XXXXXXXXX" required><br><br>
+
+                <label for="role">Role:</label><br>
+                <select id="role" name="role">
+                    <option value="manager">Sales and Rental Manager</option>
+                    <option value="technician">Repair Technician</option>
+                    <option value="admin">Administrator</option>
+                </select><br><br>
+
+                <label for="password">Demo Password:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <input type="submit" value="Add Staff">
+
+                <input type="reset" value="Reset">
+            </form>
+        </div>
+
+        <div class="box">
+            <h3>All Accounts</h3>
+
+            <label for="roleFilter">Show:</label>
+            <select id="roleFilter" class="small-input" onchange="showUsers()">
+                <option value="all">All</option>
+                <option value="admin">Administrator</option>
+                <option value="customer">Customer</option>
+                <option value="technician">Repair Technician</option>
+                <option value="manager">Sales and Rental Manager</option>
+            </select><br><br>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        loadUsersPage();
+    </script>
+</body>
+</html>
