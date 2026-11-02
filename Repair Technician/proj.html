@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Automobile Management System</title>
+    <link rel="stylesheet" href="proj-style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <h2>Automobile Management System</h2>
+
+        <!-- Navigation Tabs -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showTab('tab-register')">1. Technician Registration</button>
+            <button class="tab-btn" onclick="showTab('tab-schedule')">2. Appointments</button>
+            <button class="tab-btn" onclick="showTab('tab-diagnosis')">3. Diagnosis & Estimates</button>
+            <button class="tab-btn" onclick="showTab('tab-progress')">4. Repair Progress</button>
+            <button class="tab-btn" onclick="showTab('tab-history')">5. Vehicle History</button>
+        </div>
+
+        <!-- TAB 1: REGISTRATION FORM -->
+        <div id="tab-register" class="tab-content active">
+            <h3>Repair Technician Registration Form</h3>
+            <form id="techForm" action="#" method="post">
+
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" required placeholder="Enter full name"><br><br>
+
+                    <label for="id">Technician ID:</label>
+                    <input type="text" id="id" required placeholder="Enter technician ID"><br><br>
+
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob"><br><br>
+
+                    <label>Gender:</label>
+                    <input type="radio" id="male" name="gender" value="Male"><label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="Female"><label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="Other"><label for="other">Other</label><br><br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" required placeholder="Enter phone number"><br><br>
+
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" required placeholder="Enter email address"><br><br>
+
+                    <label for="address">Address:</label>
+                    <textarea id="address" rows="3" placeholder="Enter address"></textarea><br><br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Professional Information</legend>
+                    <label for="specialization">Specialization:</label>
+                    <select id="specialization" required>
+                        <option value="">Select specialization</option>
+                        <option value="Engine Repair">Engine Repair</option>
+                        <option value="Electrical Systems">Electrical Systems</option>
+                        <option value="Brake Repair">Brake Repair</option>
+                        <option value="Transmission">Transmission</option>
+                        <option value="Air Conditioning">Air Conditioning</option>
+                    </select><br><br>
+
+                    <label for="experience">Years of Experience:</label>
+                    <input type="number" id="experience" min="0" max="60" required><br><br>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Account Information</legend>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required placeholder="Create username"><br><br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required placeholder="Create password"><br><br>
+                </fieldset>
+
+                <br>
+                <input type="checkbox" id="confirm" required>
+                <label for="confirm">I confirm that the information provided is correct.</label>
+
+                <br><br>
+                <input type="submit" value="Register Technician">
+                <input type="reset" value="Clear Form">
+            </form>
+            <div id="regMessage" class="status-msg"></div>
+        </div>
+
+        <!-- TAB 2: FEATURE 1 - APPOINTMENT MANAGEMENT -->
+        <div id="tab-schedule" class="tab-content">
+            <h3>Schedule & Accept Appointments</h3>
+            <form id="scheduleForm">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" required placeholder="Enter customer name"><br><br>
+
+                <label for="appDate">Appointment Date:</label>
+                <input type="date" id="appDate" required><br><br>
+
+                <label for="appTime">Time Slot:</label>
+                <select id="appTime" required>
+                    <option value="">Select Time</option>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                </select><br><br>
+
+                <button type="submit">Schedule Job</button>
+            </form>
+            <div id="scheduleMessage" class="status-msg"></div>
+        </div>
+
+        <!-- TAB 3: FEATURE 2 - DIAGNOSIS & ESTIMATES -->
+        <div id="tab-diagnosis" class="tab-content">
+            <h3>Diagnosis & Repair Estimates</h3>
+            <form id="estimateForm">
+                <label for="diagnosisNotes">Diagnosis Notes:</label>
+                <textarea id="diagnosisNotes" rows="3" required placeholder="Describe the issue..."></textarea><br><br>
+
+                <label for="partsCost">Parts Cost (BDT):</label>
+                <input type="number" id="partsCost" min="0" required placeholder="0"><br><br>
+
+                <label for="laborCost">Labor Charges (BDT):</label>
+                <input type="number" id="laborCost" min="0" required placeholder="0"><br><br>
+
+                <button type="button" onclick="calculateTotal()">Calculate Estimate</button>
+            </form>
+            <div id="estimateResult" class="status-msg"></div>
+        </div>
+
+        <!-- TAB 4: FEATURE 3 - REPAIR PROGRESS -->
+        <div id="tab-progress" class="tab-content">
+            <h3>Update Repair Progress</h3>
+            <form id="progressForm">
+                <label for="vehicleId">Vehicle Reg Number:</label>
+                <input type="text" id="vehicleId" required placeholder="e.g., DHAKA-METRO-123"><br><br>
+
+                <label for="repairStatus">Repair Status:</label>
+                <select id="repairStatus" required>
+                    <option value="Received">Received</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select><br><br>
+
+                <label for="customerNotes">Notes for Customer:</label>
+                <textarea id="customerNotes" rows="3" placeholder="Enter notes visible to customer..."></textarea><br><br>
+
+                <button type="submit">Update Progress</button>
+            </form>
+            <div id="progressMessage" class="status-msg"></div>
+        </div>
+
+        <!-- TAB 5: FEATURE 4 - VEHICLE HISTORY -->
+        <div id="tab-history" class="tab-content">
+            <h3>Vehicle Service History</h3>
+            <form id="historyForm">
+                <label for="historyVehicle">Vehicle Reg Number:</label>
+                <input type="text" id="historyVehicle" required placeholder="e.g., DHAKA-METRO-123"><br><br>
+
+                <label for="replacedParts">Replaced Parts:</label>
+                <input type="text" id="replacedParts" placeholder="e.g., Oil Filter, Brake Pads"><br><br>
+
+                <label for="recommendations">Maintenance Recommendations:</label>
+                <textarea id="recommendations" rows="3" placeholder="Enter future recommendations..."></textarea><br><br>
+
+                <button type="submit">Save History</button>
+            </form>
+            <div id="historyMessage" class="status-msg"></div>
+        </div>
+
+    </div>
+
+    <script src="proj-script.js"></script>
+</body>
+</html>
